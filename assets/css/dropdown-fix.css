@@ -1,0 +1,143 @@
+/**
+ * প্রোফাইল ড্রপডাউন মেনু CSS ফিক্স
+ * এই ফাইলটি style.css এর পরে include করুন
+ */
+
+/* Enhanced User Dropdown Styles */
+.nav-user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-user-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.nav-user-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-user-btn:focus {
+    background: rgba(255, 255, 255, 0.15);
+    outline: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-user-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.nav-user-dropdown.active .nav-user-btn svg {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.nav-user-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-item:focus {
+    background: rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+/* Glassmorphism theme compatibility */
+.glass-navbar .dropdown-menu {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed;
+        top: 60px;
+        right: 16px;
+        left: 16px;
+        min-width: auto;
+    }
+    
+    .nav-user-dropdown {
+        width: 100%;
+    }
+    
+    .nav-user-btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .dropdown-menu {
+        border: 2px solid #000;
+        background: #fff;
+    }
+    
+    .dropdown-item {
+        color: #000;
+        border-bottom-color: #ccc;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .nav-user-btn,
+    .dropdown-menu,
+    .dropdown-item {
+        transition: none;
+    }
+    
+    .nav-user-btn svg {
+        transition: none;
+    }
+}
